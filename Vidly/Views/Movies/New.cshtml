@@ -1,0 +1,61 @@
+﻿@model Vidly.Models.Movie
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Movie</h2>
+
+@using (Html.BeginForm("New", "Movies", FormMethod.Post))
+{
+
+    @Html.ValidationSummary()
+    <div class="form-group">
+
+        <label>Name</label>
+       @Html.TextBoxFor(m => m.Name, new {@Value = "Enter Name",     @class = "red" })
+        @Html.ValidationMessageFor(m=>m.Name)
+
+
+    </div>
+    <div class="form-group">
+
+        <label>Genre</label>
+        @Html.TextBoxFor(m => m.Genre,
+ new
+ {
+     @Value = "Enter Genre",
+     @class = "red"
+ })
+        @Html.ValidationMessageFor(m => m.Genre)
+
+    </div>
+    <div class="form-group">
+
+        <label>Release Date</label>
+        @Html.TextBoxFor(m => m.releasedate,
+ new
+ {
+     @Value = "Enter Date",
+     @class = "red"
+ })
+        @Html.ValidationMessageFor(m => m.releasedate)
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Number in stocks</label>
+       @Html.TextBoxFor(m => m.numberinstocks,
+ new
+ {
+     @Value = "Enter number of stocks",
+     @class = "red"
+ })
+        @Html.ValidationMessageFor(m => m.numberinstocks)
+    </div>
+    @Html.AntiForgeryToken()
+    <input type="submit" value="submit" class="btn btn-group-sm " />
+
+}
+

@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Vidly.Models.Movie>
+<h1>@ViewBag.Title</h1>
+
+<input type="button" class="btn btn-primary" value="New Movie" onclick="window.location.href='@Url.Action("New","Movies" )';" />
+
+<table>
+    <tr>
+    <thead >Name </thead>
+    <thead >Genre</thead>
+    </tr>
+    @foreach (var item in Model)
+            {
+        <tr>
+
+            <td>@Html.ActionLink(@item.Name, "particular", "Movies", new { name = @item.Name ,genre=@item.Genre,release=@item.releasedate,nis=@item.numberinstocks}, htmlAttributes: null)</td>
+            <td>@item.Genre</td>
+
+        </tr>
+    }
+
+
+</table>

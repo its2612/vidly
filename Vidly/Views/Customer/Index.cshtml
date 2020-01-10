@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Vidly.Models.Customer>
+<table>
+    @foreach (var item in Model)
+            {
+        <tr>
+            
+            <td>@Html.ActionLink(@item.Name, "particular", "Customer", new { name = @item.Birthdate }, htmlAttributes: null)</td>    <td>@item.MembershipType</td>
+          
+        </tr>
+    }
+
+    
+</table>

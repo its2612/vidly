@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VidlyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Vidly.dbo.Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="MembershipType" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MembershipType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Birthdate" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Vidly.dbo.Movie' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Movie">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Genre" />
+      <PropertyRef Name="releasedate" />
+      <PropertyRef Name="numberinstocks" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Genre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="releasedate" Type="date" Nullable="false" />
+    <Property Name="numberinstocks" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="VidlyModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Customer].[Id] AS [Id], 
+    [Customer].[Name] AS [Name], 
+    [Customer].[MembershipType] AS [MembershipType], 
+    [Customer].[Birthdate] AS [Birthdate]
+    FROM [dbo].[Customer] AS [Customer]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Movie" EntityType="Self.Movie" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Movie].[Id] AS [Id], 
+    [Movie].[Name] AS [Name], 
+    [Movie].[Genre] AS [Genre], 
+    [Movie].[releasedate] AS [releasedate], 
+    [Movie].[numberinstocks] AS [numberinstocks]
+    FROM [dbo].[Movie] AS [Movie]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
